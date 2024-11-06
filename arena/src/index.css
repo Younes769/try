@@ -1,0 +1,97 @@
+/* Base setup for a futuristic blue palette */
+body {
+  background: linear-gradient(135deg, #1a1f3b, #0e1a3e);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.App {
+  max-width: 500px;
+  padding: 2rem;
+  background: rgba(17, 25, 40, 0.85);
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+  color: #e0f7fa;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.8rem;
+  color: #00d4ff;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 1rem;
+  color: #a3d8f4;
+  font-weight: bold;
+}
+
+.input, .select {
+  background: #112240;
+  color: #00d4ff;
+  border: 1px solid #0d47a1;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input:focus, .select:focus {
+  border-color: #00d4ff;
+  box-shadow: 0 0 5px #00d4ff;
+}
+
+.checkbox-label {
+  font-size: 0.9rem;
+  color: #80deea;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  margin-right: 0.5rem;
+  transform: scale(1.2);
+}
+
+.submit-button {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0d47a1, #00d4ff);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.submit-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #00d4ff;
+}
+
+.submit-button:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+.success-message, .error-message {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #00e676;
+}
