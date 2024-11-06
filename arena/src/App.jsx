@@ -3,29 +3,20 @@ import React, { useState } from 'react';
 function App() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submissionSuccess, setSubmissionSuccess] = useState(null);
-
-    const handleSubmit = (e) => {
-        setIsSubmitting(true);
-        setSubmissionSuccess(null);
-
-        setTimeout(() => {
-            setIsSubmitting(false);
-            setSubmissionSuccess(true);
-            e.target.reset();
-        }, 500);
-    };
+    const [hasTeam, setHasTeam] = useState(false);
 
     return (
         <div className="App">
             <h1 className="title">Arena Coding Challenge Registration</h1>
-            {submissionSuccess && <p className="success-message">Registration successful! Welcome to Arena.</p>}
+            {submissionSuccess && <p className="success-message">Registration successful! Thank you for joining Arena.</p>}
             {submissionSuccess === false && <p className="error-message">There was an error with your submission. Please try again.</p>}
 
             <form 
                 className="form"
                 action="https://send.pageclip.co/vASBJvGlsoZtFuqI7KzeIMP6ga4mdjU1/arena" 
                 method="POST"
-                onSubmit={handleSubmit}
+                onSubmit={() => setIsSubmitting(true)}
+                target="_blank"
             >
                 <label className="label">
                     Full Name
@@ -47,18 +38,38 @@ function App() {
                 </label>
 
                 <label className="label">
-                    Coding Experience
-                    <select name="experience" required className="select">
-                        <option value="beginner">Beginner</option>
-                        <option value="intermediate">Intermediate</option>
-                        <option value="advanced">Advanced</option>
-                    </select>
-                </label>
-
-                <label className="label">
                     Preferred Programming Languages
                     <input type="text" name="languages" placeholder="e.g., Python, JavaScript" required className="input" />
                 </label>
+
+                <label className="label">
+                    Do you have a team?
+                    <select onChange={(e) => setHasTeam(e.target.value === "yes")} required className="select">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </label>
+
+                {hasTeam && (
+                    <>
+                        <label className="label">
+                            Team Name
+                            <input type="text" name="teamName" required className="input" />
+                        </label>
+
+                        <label className="label">Additional Team Members (up to 3)</label>
+                        {[1, 2, 3].map((member) => (
+                            <input
+                                type="text"
+                                name={`teamMember${member}`}
+                                placeholder={`Team Member ${member}`}
+                                key={member}
+                                className="input"
+                                required={false} 
+                            />
+                        ))}
+                    </>
+                )}
 
                 <label className="checkbox-label">
                     <input type="checkbox" name="terms" required className="checkbox" />
