@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import logo from './assets/logo.png';
+import react from './assets/react.svg';
+
+
 
 function App() {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -7,7 +11,10 @@ function App() {
 
     return (
         <div className="App">
-            <h1 className="title">Arena Coding Challenge Registration</h1>
+            <img src={logo} alt="Arena Logo" className="logo" />
+           
+
+            <h1 className="title"> Registration</h1>
             {submissionSuccess && <p className="success-message">Registration successful! Thank you for joining Arena.</p>}
             {submissionSuccess === false && <p className="error-message">There was an error with your submission. Please try again.</p>}
 
